@@ -1,0 +1,68 @@
+/* Nachtelijke Fjord — een donkere zaal, elk object apart uitgelicht,
+   alsof je met een zaklamp door een onderwatergrot loopt. */
+:root{
+  --bg:#0B0D10;
+  --panel:#12151A;
+  --text:#E7E2D6;
+  --muted:#8B8F98;
+  --moss:#7C8A6E;
+  --copper:#C98A4E;
+  --line:rgba(231,226,214,0.12);
+}
+body{background:var(--bg);color:var(--text);}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;}
+
+.theme-switcher{display:none !important;} /* shown via JS only when enabled */
+
+.site-header{background:rgba(11,13,16,0.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+.site-logo{font-family:'Fraunces',serif;font-size:19px;letter-spacing:0.04em;}
+.site-header nav a{color:var(--text);opacity:0.65;font-size:13px;}
+.site-header nav a:hover{opacity:1;color:var(--copper);}
+.account-area button, .account-area span{border:1px solid var(--line);color:var(--text);}
+
+.object-tag{border:1px solid var(--line);color:var(--moss);font-family:'IBM Plex Mono',monospace;background:rgba(11,13,16,0.75);}
+.object-tag .dot{background:var(--moss);}
+
+/* ---- Hero: image gets a dark vignette, panel is a quiet dark room ---- */
+.hero{border-bottom:1px solid var(--line);}
+.hero-media{background:#000;}
+.hero-media::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at center, transparent 40%, rgba(11,13,16,0.55) 100%);
+  pointer-events:none;
+}
+.hero-media img{filter:contrast(1.08) saturate(0.85) brightness(0.92);}
+.hero-panel{background:var(--panel);}
+.hero-panel h1{font-size:clamp(30px,3.4vw,44px);line-height:1.15;}
+.hero-panel p{font-size:14px;line-height:1.85;opacity:0.68;}
+.price-row .now{font-family:'Fraunces',serif;font-size:23px;color:var(--copper);}
+.price-row .was{font-size:14px;opacity:0.4;text-decoration:line-through;color:var(--text);}
+.btn{background:var(--copper);color:var(--bg);}
+.btn:hover{opacity:0.88;}
+
+.gallery-intro{border-top:1px solid var(--line);}
+.gallery-intro h2{font-size:26px;}
+.gallery-intro .count{font-family:'IBM Plex Mono',monospace;font-size:12px;opacity:0.5;color:var(--muted);}
+
+/* ---- Gallery: each object glows softly from a dark spotlight backdrop ---- */
+.item-media{
+  padding:28px;background:radial-gradient(ellipse at 50% 35%, rgba(201,138,78,0.13) 0%, transparent 68%);
+}
+.item-media img{
+  aspect-ratio:4/5;box-shadow:0 30px 60px -20px rgba(0,0,0,0.7);
+  filter:contrast(1.08) saturate(0.85) brightness(0.94);
+}
+.item-info h3{font-size:23px;}
+.item-info p{font-size:14px;line-height:1.85;opacity:0.65;}
+.item-info .now{font-family:'Fraunces',serif;font-size:19px;color:var(--copper);}
+.item-info .was{font-size:14px;opacity:0.4;text-decoration:line-through;}
+
+footer{border-top:1px solid var(--line);opacity:0.45;font-family:'IBM Plex Mono',monospace;}
+
+.modal{background:var(--panel);border:1px solid var(--line);color:var(--text);}
+.modal input, .modal select{background:var(--bg);border:1px solid var(--line);color:var(--text);}
+.modal .close{color:var(--text);opacity:0.6;}
+.modal .switch{opacity:0.6;}
+.modal .error-msg{color:#d98b6b;}
+.modal .summary-line{border-bottom:1px solid var(--line);}
+.modal .summary-total{font-family:'Fraunces',serif;font-size:19px;color:var(--copper);}

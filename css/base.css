@@ -1,0 +1,85 @@
+/* Base.css — structure & behaviour shared by every theme.
+   Visual identity (color, type, spacing rhythm, decoration) lives in the
+   theme-*.css files and overrides these defaults. */
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Manrope',sans-serif;font-weight:300;}
+img{display:block;max-width:100%;}
+button{cursor:pointer;font-family:inherit;}
+
+/* ---- Theme switcher (fixed corner control) ---- */
+.theme-switcher{
+  position:fixed;bottom:20px;right:20px;z-index:50;
+  display:flex;flex-direction:column;gap:6px;
+  background:rgba(20,20,20,0.85);padding:10px;border-radius:2px;
+}
+.theme-switcher button{
+  background:none;border:1px solid rgba(255,255,255,0.25);color:#eee;
+  font-size:11px;padding:7px 12px;text-align:left;font-family:'IBM Plex Mono',monospace;
+}
+.theme-switcher button.active{border-color:#B07845;color:#B07845;}
+
+/* ---- Header ---- */
+.site-header{display:flex;justify-content:space-between;align-items:center;padding:24px 48px;position:sticky;top:0;z-index:10;}
+.site-logo{cursor:pointer;}
+.site-header nav ul{display:flex;gap:32px;list-style:none;}
+.site-header nav a{text-decoration:none;cursor:pointer;}
+.account-area{display:flex;align-items:center;gap:14px;font-size:12px;}
+.account-area button, .account-area span{font-family:inherit;font-size:12px;padding:7px 14px;cursor:pointer;background:none;}
+
+/* ---- Object tag (museum-label chip) ---- */
+.object-tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;white-space:nowrap;}
+.object-tag .dot{width:5px;height:5px;border-radius:50%;flex:none;}
+
+/* ---- Hero: default = split layout; themes may override to stacked/typographic ---- */
+.hero{display:grid;grid-template-columns:1.3fr 1fr;min-height:78vh;}
+.hero-media{position:relative;overflow:hidden;}
+.hero-media img{width:100%;height:100%;object-fit:cover;}
+.hero-panel{display:flex;flex-direction:column;justify-content:center;padding:60px 56px;}
+.hero-panel h1{margin:20px 0 18px;}
+.hero-panel p{margin-bottom:26px;max-width:380px;}
+.price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:28px;}
+.btn{border:none;padding:13px 26px;font-size:13px;font-weight:500;align-self:flex-start;}
+
+/* ---- Gallery section intro ---- */
+.gallery-intro{padding:90px 48px 36px;display:flex;justify-content:space-between;align-items:baseline;}
+
+/* ---- Gallery: default = alternating split rows; themes may override to stacked/grid ---- */
+.gallery{display:flex;flex-direction:column;}
+.item{display:grid;grid-template-columns:0.9fr 1fr;padding:0 48px 90px;gap:56px;align-items:start;}
+.item-media{position:relative;}
+.item-media img{width:100%;aspect-ratio:4/5;object-fit:cover;}
+.item-media .object-tag{position:absolute;left:16px;bottom:16px;padding:5px 12px;}
+.item-info{padding-top:24px;}
+.item-info h3{margin-bottom:14px;}
+.item-info p{max-width:360px;margin-bottom:24px;}
+.item:nth-child(even){grid-template-columns:1fr 0.9fr;}
+.item:nth-child(even) .item-media{order:2;}
+.item:nth-child(even) .item-info{order:1;}
+
+footer{text-align:center;padding:48px;font-size:12px;}
+
+/* ---- Modals (identical mechanics across themes) ---- */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;align-items:center;justify-content:center;}
+.modal-overlay.visible{display:flex;}
+.modal{padding:40px;max-width:400px;width:90%;position:relative;}
+.modal h3{margin-bottom:22px;}
+.modal input, .modal select{width:100%;padding:12px;margin-bottom:14px;font-family:inherit;}
+.modal .close{position:absolute;top:16px;right:20px;cursor:pointer;font-size:18px;background:none;border:none;}
+.modal .switch{font-size:12px;margin-top:14px;cursor:pointer;text-align:center;}
+.modal .error-msg{font-size:12px;margin-bottom:12px;min-height:14px;}
+.modal .summary-line{display:flex;justify-content:space-between;font-size:13px;padding:8px 0;}
+.modal .summary-total{margin-top:16px;}
+
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;}
+  .hero-media{height:44vh;}
+  .item, .item:nth-child(even){grid-template-columns:1fr;gap:20px;}
+  .item-media, .item:nth-child(even) .item-media{order:1;}
+  .item-info, .item:nth-child(even) .item-info{order:2;padding-top:0;}
+  .site-header{padding:18px 20px;flex-wrap:wrap;gap:12px;}
+  .site-header nav ul{gap:16px;flex-wrap:wrap;}
+  .gallery-intro, .item{padding-left:20px;padding-right:20px;}
+  .hero-panel{padding:36px 24px;}
+  .theme-switcher{bottom:auto;top:80px;}
+}

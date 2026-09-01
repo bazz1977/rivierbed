@@ -1,0 +1,78 @@
+/* Archiefkaart — een negentiende-eeuws natuurhistorisch register: elk
+   object is een genummerde steekkaart met een gestempeld catalogusnummer,
+   in een rooster zoals een echte kaartenbak. */
+:root{
+  --bg:#EDE6D3;
+  --card:#F5F0E3;
+  --text:#2E2417;
+  --muted:#75674E;
+  --stamp:#9C4A32;
+  --line:#C9BB9C;
+}
+body{background:var(--bg);color:var(--text);}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;}
+
+.theme-switcher{display:none !important;}
+
+.site-header{background:rgba(237,230,211,0.94);border-bottom:2px solid var(--text);}
+.site-logo{font-family:'Fraunces',serif;font-size:19px;}
+.site-header nav a{color:var(--text);opacity:0.6;font-size:12px;font-family:'IBM Plex Mono',monospace;}
+.site-header nav a:hover{opacity:1;color:var(--stamp);}
+.account-area button, .account-area span{border:1px solid var(--text);color:var(--text);font-family:'IBM Plex Mono',monospace;}
+
+.object-tag{color:var(--stamp);font-family:'IBM Plex Mono',monospace;font-size:11px;border:1px solid var(--stamp);padding:4px 9px;transform:rotate(-1.5deg);}
+.object-tag .dot{display:none;}
+
+/* ---- Hero: styled as one oversized specimen card ---- */
+.hero{background:var(--card);border-bottom:3px double var(--text);padding:36px 48px;}
+.hero-media{border:1px solid var(--text);padding:10px;background:var(--card);}
+.hero-media::after{display:none;}
+.hero-media img{filter:sepia(0.15) contrast(1.05);}
+.hero-panel{padding:40px 20px 20px 56px;position:relative;}
+.hero-panel::before{
+  content:"N° 000 — COLLECTIE";font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;
+  color:var(--muted);display:block;margin-bottom:10px;
+}
+.hero-panel h1{font-size:clamp(26px,3vw,36px);}
+.hero-panel p{font-size:14px;line-height:1.8;color:var(--muted);}
+.price-row .now{font-family:'Fraunces',serif;font-size:20px;color:var(--stamp);}
+.price-row .was{font-size:13px;opacity:0.5;text-decoration:line-through;}
+.btn{background:var(--text);color:var(--card);border-radius:0;}
+.btn:hover{background:var(--stamp);}
+
+.gallery-intro h2{font-size:24px;}
+.gallery-intro .count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+
+/* ---- Gallery: card-catalog grid, not alternating rows ---- */
+.gallery{display:grid;grid-template-columns:repeat(2, 1fr);gap:32px;padding:0 48px 90px;}
+.item{
+  display:flex;flex-direction:column;padding:20px;gap:0;
+  background:var(--card);border:1px solid var(--text);position:relative;
+}
+.item:nth-child(even){grid-template-columns:unset;}
+.item:nth-child(even) .item-media, .item-media{order:initial;}
+.item:nth-child(even) .item-info, .item-info{order:initial;}
+.item-media{border:1px solid var(--line);padding:8px;margin-bottom:16px;}
+.item-media img{aspect-ratio:1/1;filter:sepia(0.15) contrast(1.05);}
+.item-media .object-tag{position:absolute;top:14px;right:14px;background:var(--card);}
+.item-info{padding-top:0;}
+.item-info h3{font-size:19px;margin-bottom:8px;}
+.item-info p{font-size:13px;line-height:1.75;color:var(--muted);margin-bottom:16px;}
+.item-info .now{font-family:'Fraunces',serif;font-size:17px;color:var(--stamp);}
+.item-info .was{font-size:13px;opacity:0.5;text-decoration:line-through;}
+
+footer{border-top:2px solid var(--text);opacity:0.7;font-family:'IBM Plex Mono',monospace;font-size:11px;}
+
+.modal{background:var(--card);border:1px solid var(--text);color:var(--text);}
+.modal input, .modal select{background:var(--bg);border:1px solid var(--line);color:var(--text);}
+.modal .close{color:var(--text);}
+.modal .switch{color:var(--muted);}
+.modal .error-msg{color:var(--stamp);}
+.modal .summary-line{border-bottom:1px dashed var(--line);}
+.modal .summary-total{font-family:'Fraunces',serif;font-size:18px;color:var(--stamp);}
+
+@media(max-width:860px){
+  .gallery{grid-template-columns:1fr;padding:0 20px 60px;}
+  .hero{padding:24px 20px;}
+  .hero-panel{padding:28px 4px 4px;}
+}

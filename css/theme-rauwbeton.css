@@ -1,0 +1,80 @@
+/* Rauw Beton — een verbouwde loods: kale betonvloer, stalen regels,
+   geen sierletters. De typografie is zwaar en functioneel, net als de
+   ruimte waarin het hout tentoongesteld zou staan. */
+:root{
+  --bg:#B7B4AC;
+  --panel:#0E0D0C;
+  --text:#15130F;
+  --paper:#EDEBE4;
+  --rust:#B5471F;
+  --line:#0E0D0C;
+}
+body{background:var(--bg);color:var(--text);}
+h1,h2,h3{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;}
+body{
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 120px);
+}
+
+.theme-switcher{display:none !important;}
+
+.site-header{background:var(--paper);border-bottom:3px solid var(--text);}
+.site-logo{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;}
+.site-header nav a{color:var(--text);font-size:12px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;}
+.site-header nav a:hover{color:var(--rust);}
+.account-area button, .account-area span{border:2px solid var(--text);color:var(--text);font-family:'IBM Plex Mono',monospace;border-radius:0;}
+
+.object-tag{color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;background:var(--paper);border:2px solid var(--text);padding:5px 10px;}
+.object-tag .dot{background:var(--rust);}
+
+/* ---- Hero: typography IS the hero, photo is a smaller inset panel ---- */
+.hero{
+  display:grid;grid-template-columns:1.4fr 1fr;min-height:70vh;background:var(--paper);
+  border-bottom:4px solid var(--text);
+}
+.hero-media{border-left:4px solid var(--text);}
+.hero-media::after{display:none;}
+.hero-media img{filter:grayscale(0.25) contrast(1.15);}
+.hero-panel{padding:56px;justify-content:center;}
+.hero-panel h1{font-size:clamp(40px,6vw,84px);line-height:0.95;margin:14px 0 22px;}
+.hero-panel p{font-size:14px;line-height:1.7;max-width:360px;font-family:'IBM Plex Mono',monospace;}
+.price-row .now{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;color:var(--rust);}
+.price-row .was{font-size:14px;opacity:0.5;text-decoration:line-through;}
+.btn{background:var(--rust);color:var(--paper);border-radius:0;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;}
+.btn:hover{background:var(--text);}
+
+.gallery-intro{background:var(--paper);border-bottom:2px solid var(--text);}
+.gallery-intro h2{font-size:22px;}
+.gallery-intro .count{font-family:'IBM Plex Mono',monospace;font-size:12px;}
+
+/* ---- Gallery: hard structural grid, numbered bays, no split rows ---- */
+.gallery{display:grid;grid-template-columns:repeat(3, 1fr);background:var(--text);gap:2px;}
+.item{
+  display:flex;flex-direction:column;padding:0;gap:0;background:var(--paper);position:relative;
+}
+.item:nth-child(even){grid-template-columns:unset;}
+.item-media, .item:nth-child(even) .item-media{order:initial;position:relative;}
+.item-info, .item:nth-child(even) .item-info{order:initial;padding:22px;}
+.item-media img{aspect-ratio:1/1;filter:grayscale(0.25) contrast(1.15);border-radius:0;}
+.item-media .object-tag{position:absolute;left:0;top:0;background:var(--text);color:var(--paper);border:none;border-radius:0;}
+.item-info h3{font-size:17px;margin-bottom:10px;}
+.item-info p{font-size:13px;line-height:1.7;opacity:0.75;margin-bottom:18px;font-family:'IBM Plex Mono',monospace;text-transform:none;font-weight:400;}
+.item-info .now{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--rust);}
+.item-info .was{font-size:13px;opacity:0.5;text-decoration:line-through;}
+
+footer{background:var(--text);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;}
+
+.modal{background:var(--paper);border:3px solid var(--text);color:var(--text);border-radius:0;}
+.modal input, .modal select{background:#fff;border:2px solid var(--text);color:var(--text);border-radius:0;}
+.modal .close{color:var(--text);}
+.modal .switch{font-family:'IBM Plex Mono',monospace;}
+.modal .error-msg{color:var(--rust);}
+.modal .summary-line{border-bottom:1px solid var(--text);font-family:'IBM Plex Mono',monospace;}
+.modal .summary-total{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:var(--rust);}
+
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;}
+  .hero-media{border-left:none;border-top:4px solid var(--text);}
+  .gallery{grid-template-columns:1fr;}
+}
