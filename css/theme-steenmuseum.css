@@ -12,8 +12,6 @@
 body{background:var(--bg);color:var(--text);}
 h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
 
-.theme-switcher{display:none !important;}
-
 .site-header{background:rgba(241,238,231,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
 .site-logo{font-family:'Fraunces',serif;font-size:19px;}
 .site-header nav a{color:var(--text);opacity:0.55;font-size:13px;}
