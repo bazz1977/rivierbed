@@ -1,0 +1,76 @@
+/* Steenmuseum — een lichte, stille zaal met kalksteen vloeren. Je loopt
+   langs één object per keer: grote foto, dan pas de tekst eronder, zoals
+   een echte zaal met een enkel podium per stuk. */
+:root{
+  --bg:#F1EEE7;
+  --panel:#E7E3D9;
+  --text:#232019;
+  --muted:#6B6355;
+  --accent:#8B6F4E;
+  --line:rgba(35,32,25,0.12);
+}
+body{background:var(--bg);color:var(--text);}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
+
+
+.site-header{background:rgba(241,238,231,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+.site-logo{font-family:'Fraunces',serif;font-size:19px;}
+.site-header nav a{color:var(--text);opacity:0.55;font-size:13px;}
+.site-header nav a:hover{opacity:1;color:var(--accent);}
+.account-area button, .account-area span{border:1px solid var(--line);color:var(--text);}
+
+.object-tag{color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+.object-tag .dot{background:var(--accent);}
+
+/* ---- Hero: full-width image with huge margin, caption BELOW not beside ---- */
+.hero{
+  display:block;min-height:auto;padding:64px 64px 0;
+}
+.hero-media{aspect-ratio:16/10;max-width:1400px;margin:0 auto;}
+.hero-media::after{display:none;}
+.hero-media img{filter:contrast(1.02) saturate(0.92);}
+.hero-panel{
+  display:block;max-width:640px;margin:0 auto;padding:40px 24px 90px;text-align:left;
+}
+.hero-panel h1{font-size:clamp(32px,4vw,52px);line-height:1.1;margin-top:18px;}
+.hero-panel p{font-size:15px;line-height:1.9;opacity:0.7;max-width:520px;}
+.price-row .now{font-family:'Fraunces',serif;font-size:22px;color:var(--accent);}
+.price-row .was{font-size:14px;opacity:0.4;text-decoration:line-through;}
+.btn{background:var(--text);color:var(--bg);}
+.btn:hover{opacity:0.85;}
+
+.gallery-intro{border-top:1px solid var(--line);max-width:1400px;margin:0 auto;padding-left:64px;padding-right:64px;}
+.gallery-intro h2{font-size:28px;}
+.gallery-intro .count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+
+/* ---- Gallery: single column, image full-width, text centered below ---- */
+.gallery{max-width:1400px;margin:0 auto;}
+.item{
+  display:block;padding:0 64px 130px;
+}
+.item:nth-child(even){display:block;}
+.item-media, .item:nth-child(even) .item-media{order:initial;aspect-ratio:16/9;}
+.item-media img{aspect-ratio:16/9;filter:contrast(1.02) saturate(0.92);}
+.item-media .object-tag{position:static;background:none;padding:0;margin-top:16px;}
+.item-info, .item:nth-child(even) .item-info{order:initial;padding-top:16px;max-width:640px;}
+.item-info h3{font-size:26px;margin-top:6px;}
+.item-info p{font-size:15px;line-height:1.9;opacity:0.68;max-width:520px;}
+.item-info .now{font-family:'Fraunces',serif;font-size:20px;color:var(--accent);}
+.item-info .was{font-size:14px;opacity:0.4;text-decoration:line-through;}
+
+footer{border-top:1px solid var(--line);opacity:0.5;font-family:'IBM Plex Mono',monospace;}
+
+.modal{background:var(--bg);border:1px solid var(--line);color:var(--text);}
+.modal input, .modal select{background:#fff;border:1px solid var(--line);color:var(--text);}
+.modal .close{color:var(--text);opacity:0.6;}
+.modal .switch{opacity:0.6;}
+.modal .error-msg{color:#a13f2b;}
+.modal .summary-line{border-bottom:1px solid var(--line);}
+.modal .summary-total{font-family:'Fraunces',serif;font-size:19px;color:var(--accent);}
+
+@media(max-width:860px){
+  .hero{padding:36px 20px 0;}
+  .hero-panel{padding:28px 4px 60px;}
+  .gallery-intro{padding-left:20px;padding-right:20px;}
+  .item{padding:0 20px 70px;}
+}
