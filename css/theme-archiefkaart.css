@@ -12,8 +12,6 @@
 body{background:var(--bg);color:var(--text);}
 h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;}
 
-.theme-switcher{display:none !important;}
-
 .site-header{background:rgba(237,230,211,0.94);border-bottom:2px solid var(--text);}
 .site-logo{font-family:'Fraunces',serif;font-size:19px;}
 .site-header nav a{color:var(--text);opacity:0.6;font-size:12px;font-family:'IBM Plex Mono',monospace;}
