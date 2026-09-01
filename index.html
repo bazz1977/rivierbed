@@ -5,95 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elvestrøm — Drijfhout Kunstobjecten uit Noorwegen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Manrope:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --slate:#14161B;       /* koele nachtsteen, geen zuiver zwart */
-    --parchment:#E7E2D6;   /* gebleekt drijfhout */
-    --moss:#7C8A6E;        /* rivier-mos, voor herkomst/tags */
-    --copper:#B07845;      /* verweerd koper, voor prijs/actie */
-    --line:rgba(231,226,214,0.14);
-    --panel:#1B1E24;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--slate);color:var(--parchment);font-family:'Manrope',sans-serif;font-weight:300;}
-  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;}
-
-  .tag{
-    display:inline-flex;align-items:center;gap:10px;
-    border:1px solid var(--line);padding:5px 12px;
-    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.02em;
-    color:var(--moss);white-space:nowrap;
-  }
-  .tag .dot{width:5px;height:5px;border-radius:50%;background:var(--moss);flex:none;}
-
-  header{display:flex;justify-content:space-between;align-items:center;padding:24px 48px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(20,22,27,0.92);backdrop-filter:blur(6px);z-index:10;}
-  .logo{font-family:'Fraunces',serif;font-size:19px;letter-spacing:0.04em;cursor:pointer;}
-  nav ul{display:flex;gap:32px;list-style:none;}
-  nav a{color:var(--parchment);text-decoration:none;font-size:13px;opacity:0.65;cursor:pointer;}
-  nav a:hover{opacity:1;color:var(--moss);}
-  .account-area{display:flex;align-items:center;gap:14px;font-size:12px;}
-  .account-area button, .account-area span{background:none;border:1px solid var(--line);color:var(--parchment);padding:7px 14px;cursor:pointer;font-size:12px;font-family:inherit;}
-
-  /* ---- Hero: gesplitst, geen tekst-over-foto cliché ---- */
-  .hero{display:grid;grid-template-columns:1.3fr 1fr;min-height:82vh;border-bottom:1px solid var(--line);}
-  .hero-media{position:relative;overflow:hidden;background:#000;}
-  .hero-media img{width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(0.95);}
-  .hero-panel{display:flex;flex-direction:column;justify-content:center;padding:60px 56px;background:var(--panel);}
-  .hero-panel h1{font-size:clamp(28px,3vw,40px);line-height:1.2;margin:20px 0 18px;}
-  .hero-panel p{font-size:14px;line-height:1.8;opacity:0.72;margin-bottom:26px;max-width:380px;}
-  .price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:28px;}
-  .price-row .now{font-family:'Fraunces',serif;font-size:22px;color:var(--copper);}
-  .price-row .was{font-size:14px;opacity:0.45;text-decoration:line-through;}
-  .btn{background:var(--copper);color:var(--slate);border:none;padding:13px 26px;font-size:13px;cursor:pointer;font-family:inherit;font-weight:500;align-self:flex-start;}
-  .btn:hover{opacity:0.9;}
-
-  .section-title{padding:90px 48px 36px;display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);}
-  .section-title h2{font-size:26px;}
-  .section-title .count{font-family:'IBM Plex Mono',monospace;font-size:12px;opacity:0.5;}
-
-  .gallery{display:flex;flex-direction:column;}
-  .item{display:grid;grid-template-columns:0.9fr 1fr;padding:0 48px 90px;gap:56px;align-items:start;}
-  .item-media{position:relative;}
-  .item-media img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:contrast(1.05) saturate(0.95);}
-  .item-media .tag{position:absolute;left:16px;bottom:16px;background:rgba(20,22,27,0.85);}
-  .item-info{padding-top:24px;}
-  .item-info h3{font-size:23px;margin-bottom:14px;}
-  .item-info p{font-size:14px;line-height:1.85;opacity:0.68;max-width:360px;margin-bottom:24px;}
-  .item:nth-child(even){grid-template-columns:1fr 0.9fr;}
-  .item:nth-child(even) .item-media{order:2;}
-  .item:nth-child(even) .item-info{order:1;padding-top:24px;}
-
-  footer{text-align:center;padding:48px;font-size:12px;opacity:0.45;border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;}
-
-  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,11,13,0.75);z-index:100;align-items:center;justify-content:center;}
-  .modal-overlay.visible{display:flex;}
-  .modal{background:var(--panel);border:1px solid var(--line);padding:40px;max-width:400px;width:90%;position:relative;}
-  .modal h3{font-size:19px;margin-bottom:22px;}
-  .modal input, .modal select{width:100%;padding:12px;margin-bottom:14px;background:var(--slate);border:1px solid var(--line);color:var(--parchment);font-family:inherit;}
-  .modal .close{position:absolute;top:16px;right:20px;cursor:pointer;opacity:0.6;font-size:18px;background:none;border:none;color:var(--parchment);}
-  .modal .switch{font-size:12px;opacity:0.6;margin-top:14px;cursor:pointer;text-align:center;}
-  .modal .error-msg{color:#c98a68;font-size:12px;margin-bottom:12px;min-height:14px;}
-  .modal .summary-line{display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--line);}
-  .modal .summary-total{font-family:'Fraunces',serif;font-size:19px;color:var(--copper);margin-top:16px;}
-
-  @media(max-width:860px){
-    .hero{grid-template-columns:1fr;}
-    .hero-media{height:44vh;}
-    .item, .item:nth-child(even){grid-template-columns:1fr;gap:20px;}
-    .item-media, .item:nth-child(even) .item-media{order:1;}
-    .item-info, .item:nth-child(even) .item-info{order:2;padding-top:0;}
-    header{padding:18px 20px;flex-wrap:wrap;gap:12px;}
-    nav ul{gap:16px;flex-wrap:wrap;}
-    .section-title, .item{padding-left:20px;padding-right:20px;}
-    .hero-panel{padding:36px 24px;}
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Archivo:wght@600;700;800&family=Manrope:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" id="theme-css" href="css/theme-nachtelijke-fjord.css">
 </head>
 <body>
 
-<header>
-  <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">Elvestrøm</div>
+<div id="theme-switcher" class="theme-switcher" hidden>
+  <button data-theme="steenmuseum">Steenmuseum</button>
+  <button data-theme="nachtelijke-fjord">Nachtelijke Fjord</button>
+  <button data-theme="archiefkaart">Archiefkaart</button>
+  <button data-theme="rauw-beton">Rauw Beton</button>
+</div>
+
+<header class="site-header">
+  <div class="site-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">Elvestrøm</div>
   <nav><ul>
     <li><a onclick="document.getElementById('gallery-section').scrollIntoView({behavior:'smooth'})">Collectie</a></li>
     <li><a href="https://elvestrom-driftwood.101-a9b.workers.dev/admin" target="_blank">Beheer</a></li>
@@ -104,18 +30,18 @@
 <section class="hero" id="hero">
   <div class="hero-media"><img id="hero-img" src="" alt=""></div>
   <div class="hero-panel">
-    <div class="tag" id="hero-tag"><span class="dot"></span><span id="hero-tag-text"></span></div>
-    <h1 id="hero-title">Rivierbed</h1>
+    <div class="object-tag" id="hero-tag"><span class="dot"></span><span id="hero-tag-text"></span></div>
+    <h1 id="hero-title">Elvestrøm</h1>
     <p id="hero-desc">Exclusieve drijfhout-kunstobjecten, geborgen uit de rivieren van Noorwegen.</p>
     <div class="price-row" id="hero-price-row"></div>
-    <button class="btn" id="hero-cta" style="display:none">Bestel dit object</button>
+    <button class="btn" id="hero-cta" hidden>Bestel dit object</button>
   </div>
 </section>
 
-<div class="section-title" id="gallery-section">
+<section class="gallery-intro" id="gallery-section">
   <h2>De collectie</h2>
   <span class="count" id="gallery-count"></span>
-</div>
+</section>
 
 <div class="gallery" id="gallery"></div>
 
@@ -155,156 +81,6 @@
   </div>
 </div>
 
-<script>
-// Tijdelijke drijfhout-placeholders (rechtenvrij, Pexels) totdat er scherpe
-// eigen productfoto's zijn. Vervang IMAGE_BY_TITLE hieronder zodra die er zijn.
-const IMAGE_BY_TITLE = {
-  "Rivierstuk No. 12": "https://images.pexels.com/photos/6711834/pexels-photo-6711834.jpeg?auto=compress&cs=tinysrgb&w=900&h=1125&fit=crop",
-  "Stille Stroom": "https://images.pexels.com/photos/36340078/pexels-photo-36340078.jpeg?auto=compress&cs=tinysrgb&w=900&h=1125&fit=crop",
-  "Fjordkam": "https://images.pexels.com/photos/16619830/pexels-photo-16619830.jpeg?auto=compress&cs=tinysrgb&w=900&h=1125&fit=crop",
-  "Verweerd Anker": "https://images.pexels.com/photos/11183740/pexels-photo-11183740.jpeg?auto=compress&cs=tinysrgb&w=900&h=1125&fit=crop",
-  "Rivierhuid": "https://images.pexels.com/photos/19430078/pexels-photo-19430078.jpeg?auto=compress&cs=tinysrgb&w=900&h=1125&fit=crop",
-  "Stroomvork": "https://images.pexels.com/photos/20306275/pexels-photo-20306275.jpeg?auto=compress&cs=tinysrgb&w=900&h=1125&fit=crop",
-  "Noorderpoort": "https://images.pexels.com/photos/38539559/pexels-photo-38539559.jpeg?auto=compress&cs=tinysrgb&w=900&h=1125&fit=crop",
-};
-function imageFor(obj){
-  return IMAGE_BY_TITLE[obj.title] || obj.image_data || "";
-}
-
-// ---- Vul hier de URL van je gedeployde Cloudflare Worker in ----
-const API_BASE = "https://elvestrom-driftwood.101-a9b.workers.dev";
-
-let currentUser = null;
-let authMode = 'login';
-let checkoutObjectId = null;
-let shippingRates = [];
-
-async function api(path, opts={}){
-  const res = await fetch(API_BASE + path, {credentials:'include', headers:{'Content-Type':'application/json', ...(opts.headers||{})}, ...opts});
-  let data = null;
-  try { data = await res.json(); } catch {}
-  return { ok: res.ok, status: res.status, data };
-}
-
-function openModal(id){ document.getElementById(id).classList.add('visible'); }
-function closeModal(id){ document.getElementById(id).classList.remove('visible'); document.getElementById(id).querySelectorAll('.error-msg').forEach(e=>e.textContent=''); }
-
-function renderAccountArea(){
-  const el = document.getElementById('account-area');
-  if (currentUser) {
-    el.innerHTML = `<span>${currentUser.email}</span><button onclick="doLogout()">Uitloggen</button>`;
-  } else {
-    el.innerHTML = `<button onclick="openAuthModal('login')">Inloggen</button>`;
-  }
-}
-function openAuthModal(mode){
-  authMode = mode;
-  document.getElementById('auth-title').textContent = mode === 'login' ? 'Inloggen' : 'Account aanmaken';
-  document.querySelector('#auth-modal .switch').textContent = mode === 'login' ? 'Nog geen account? Registreer hier.' : 'Al een account? Log hier in.';
-  openModal('auth-modal');
-}
-function toggleAuthMode(){ openAuthModal(authMode === 'login' ? 'register' : 'login'); }
-async function submitAuth(){
-  const email = document.getElementById('auth-email').value.trim();
-  const password = document.getElementById('auth-password').value;
-  const path = authMode === 'login' ? '/api/auth/login' : '/api/auth/register';
-  const r = await api(path, {method:'POST', body: JSON.stringify({email, password})});
-  if (!r.ok) { document.getElementById('auth-error').textContent = (r.data && r.data.error) || 'Er ging iets mis'; return; }
-  currentUser = { email: r.data.email, role: r.data.role };
-  renderAccountArea();
-  closeModal('auth-modal');
-}
-async function doLogout(){
-  await api('/api/auth/logout', {method:'POST'});
-  currentUser = null;
-  renderAccountArea();
-}
-async function checkSession(){
-  const r = await api('/api/auth/me');
-  if (r.ok && r.data.loggedIn) currentUser = { email: r.data.email, role: r.data.role };
-  renderAccountArea();
-}
-
-function euros(n){ return Number(n).toFixed(2).replace('.', ','); }
-
-async function loadFeatured(){
-  const r = await api('/api/objects/featured');
-  if (!r.ok || !r.data) { document.getElementById('hero').style.display = 'none'; return; }
-  const o = r.data;
-  document.getElementById('hero-img').src = imageFor(o);
-  document.getElementById('hero-title').textContent = o.title;
-  document.getElementById('hero-desc').textContent = o.description || '';
-  document.getElementById('hero-tag-text').textContent = `${o.origin_river || ''}, ${o.origin_year || ''}`;
-  const priceRow = document.getElementById('hero-price-row');
-  priceRow.innerHTML = o.discount_percent > 0
-    ? `<span class="now">€ ${euros(o.effective_price)}</span><span class="was">€ ${euros(o.price)}</span>`
-    : `<span class="now">€ ${euros(o.price)}</span>`;
-  const cta = document.getElementById('hero-cta');
-  cta.style.display = 'inline-block';
-  cta.onclick = () => startCheckout(o.id, o.title);
-}
-
-async function loadGallery(){
-  const r = await api('/api/objects');
-  const gallery = document.getElementById('gallery');
-  document.getElementById('gallery-count').textContent = r.ok ? `${r.data.length} objecten` : '';
-  if (!r.ok) { gallery.innerHTML = '<p style="padding:0 48px 48px;opacity:0.6">Kon de collectie niet laden.</p>'; return; }
-  gallery.innerHTML = r.data.map(o => {
-    const priceHtml = o.discount_percent > 0
-      ? `<span class="now">€ ${euros(o.effective_price)}</span><span class="was">€ ${euros(o.price)}</span>`
-      : `<span class="now">€ ${euros(o.price)}</span>`;
-    return `
-    <div class="item">
-      <div class="item-media">
-        <img src="${imageFor(o)}" alt="${o.title}">
-        <div class="tag"><span class="dot"></span><span>${o.origin_river || ''}, ${o.origin_year || ''}</span></div>
-      </div>
-      <div class="item-info">
-        <h3>${o.title}</h3>
-        <p>${o.description || ''}</p>
-        <div class="price-row">${priceHtml}</div>
-        <button class="btn" onclick="startCheckout(${o.id}, '${o.title.replace(/'/g,"\\'")}')">Bestel dit object</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-async function loadShippingRates(){
-  const r = await api('/api/shipping-rates');
-  if (r.ok) shippingRates = r.data;
-}
-
-function startCheckout(objectId, title){
-  if (!currentUser) { openAuthModal('login'); return; }
-  checkoutObjectId = objectId;
-  document.getElementById('co-title').textContent = title;
-  const sel = document.getElementById('co-country');
-  sel.innerHTML = shippingRates.map(s => `<option value="${s.country}">${s.country}</option>`).join('');
-  document.getElementById('co-discount').value = '';
-  openModal('checkout-modal');
-}
-async function submitCheckout(){
-  const country = document.getElementById('co-country').value;
-  const discount_code = document.getElementById('co-discount').value.trim();
-  const r = await api('/api/checkout', {method:'POST', body: JSON.stringify({ object_id: checkoutObjectId, country, discount_code: discount_code || undefined })});
-  if (!r.ok) { document.getElementById('co-error').textContent = (r.data && r.data.error) || 'Bestellen mislukt'; return; }
-  closeModal('checkout-modal');
-  document.getElementById('confirm-body').innerHTML = `
-    <div class="summary-line"><span>Object</span><span>${r.data.object_title}</span></div>
-    <div class="summary-line"><span>Prijs</span><span>€ ${euros(r.data.price_paid)}</span></div>
-    <div class="summary-line"><span>Verzending</span><span>€ ${euros(r.data.shipping_paid)}</span></div>
-    <div class="summary-total">Totaal: € ${euros(r.data.total)}</div>
-    <p style="font-size:12px;opacity:0.6;margin-top:16px">${r.data.note || ''}</p>
-  `;
-  openModal('confirm-modal');
-  loadGallery();
-  loadFeatured();
-}
-
-checkSession();
-loadFeatured();
-loadGallery();
-loadShippingRates();
-</script>
+<script src="js/app.js"></script>
 </body>
 </html>
