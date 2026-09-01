@@ -12,7 +12,6 @@
 body{background:var(--bg);color:var(--text);}
 h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;}
 
-.theme-switcher{display:none !important;} /* shown via JS only when enabled */
 
 .site-header{background:rgba(11,13,16,0.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
 .site-logo{font-family:'Fraunces',serif;font-size:19px;letter-spacing:0.04em;}
