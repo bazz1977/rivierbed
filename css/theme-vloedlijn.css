@@ -1,0 +1,60 @@
+/* Vloedlijn — een zeekaart. Elk object krijgt een positie zoals een
+   peiling op een navigatiekaart: dieptelijnen, kompaslijnen, cyaanblauw. */
+:root{
+  --bg:#DCE4E2;
+  --panel:#C7D2CF;
+  --text:#16302B;
+  --muted:#3F615A;
+  --ink:#1B4B6E;
+  --line:#8FA6A0;
+}
+body{background:var(--bg);color:var(--text);
+  background-image:repeating-radial-gradient(circle at 15% 20%, transparent 0 60px, rgba(27,75,110,0.05) 61px 62px);
+}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;font-style:italic;}
+
+.site-header{background:rgba(220,228,226,0.92);border-bottom:1px solid var(--line);}
+.site-logo{font-family:'Fraunces',serif;font-style:italic;font-size:19px;}
+.site-header nav a{color:var(--ink);opacity:0.7;font-size:12px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;}
+.site-header nav a:hover{opacity:1;}
+.account-area button, .account-area span{border:1px solid var(--ink);color:var(--ink);font-family:'IBM Plex Mono',monospace;}
+
+.object-tag{color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10px;border-bottom:1px solid var(--ink);padding-bottom:2px;}
+.object-tag .dot{display:none;}
+.object-tag span:last-child::before{content:"63°N — ";opacity:0.6;}
+
+.hero{background:var(--panel);border-bottom:1px solid var(--line);}
+.hero-media{border:1px solid var(--ink);margin:24px;}
+.hero-media::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 70%, rgba(27,75,110,0.25));
+  pointer-events:none;
+}
+.hero-media img{filter:sepia(0.1) hue-rotate(160deg) saturate(0.7) contrast(1.05);}
+.hero-panel{padding:56px 60px;}
+.hero-panel h1{font-size:clamp(28px,3.2vw,40px);}
+.hero-panel p{font-size:14px;line-height:1.85;color:var(--muted);}
+.price-row .now{font-family:'IBM Plex Mono',monospace;font-size:19px;color:var(--ink);}
+.price-row .was{font-size:13px;opacity:0.5;text-decoration:line-through;}
+.btn{background:var(--ink);color:var(--bg);border-radius:1px;}
+.btn:hover{background:var(--text);}
+
+.gallery-intro h2{font-size:24px;font-style:italic;}
+.gallery-intro .count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+
+.item-media{border:1px solid var(--ink);margin:0 0 0 0;}
+.item-media img{aspect-ratio:4/5;filter:sepia(0.1) hue-rotate(160deg) saturate(0.7) contrast(1.05);}
+.item-media .object-tag{position:absolute;left:0;bottom:0;background:var(--bg);border:1px solid var(--ink);padding:5px 10px;}
+.item-info h3{font-size:22px;}
+.item-info p{font-size:14px;line-height:1.85;color:var(--muted);}
+.item-info .now{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--ink);}
+.item-info .was{font-size:13px;opacity:0.5;text-decoration:line-through;}
+
+footer{border-top:1px solid var(--line);opacity:0.6;font-family:'IBM Plex Mono',monospace;font-size:11px;}
+
+.modal{background:var(--panel);border:1px solid var(--ink);color:var(--text);}
+.modal input, .modal select{background:var(--bg);border:1px solid var(--line);color:var(--text);}
+.modal .close{color:var(--ink);}
+.modal .error-msg{color:#8a3b2b;}
+.modal .summary-line{border-bottom:1px solid var(--line);}
+.modal .summary-total{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--ink);}

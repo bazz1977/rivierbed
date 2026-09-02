@@ -1,0 +1,70 @@
+/* Wit Atelier — een wit fotostudio-atelier: strak modulair rooster,
+   meetlijnen zoals op een technische tekening, bijna geen kleur. */
+:root{
+  --bg:#FFFFFF;
+  --text:#0A0A0A;
+  --muted:#7A7A7A;
+  --accent:#D8451A;
+  --line:#D9D9D9;
+}
+body{background:var(--bg);color:var(--text);}
+h1,h2,h3{font-family:'Manrope',sans-serif;font-weight:600;letter-spacing:-0.02em;}
+
+.site-header{background:#fff;border-bottom:1px solid var(--line);}
+.site-logo{font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:0.02em;}
+.site-header nav a{color:var(--text);font-size:12px;font-family:'IBM Plex Mono',monospace;}
+.site-header nav a:hover{color:var(--accent);}
+.account-area button, .account-area span{border:1px solid var(--text);color:var(--text);border-radius:0;}
+
+.object-tag{color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:10px;}
+.object-tag .dot{background:var(--accent);border-radius:0;width:6px;height:6px;}
+
+.hero{grid-template-columns:1fr;min-height:auto;padding:60px 48px 0;}
+.hero-media{aspect-ratio:21/9;position:relative;border:1px solid var(--line);}
+.hero-media::after{display:none;}
+.hero-media::before{
+  content:"";position:absolute;left:-1px;top:-24px;bottom:-24px;width:1px;background:var(--line);
+}
+.hero-media img{filter:grayscale(0.1) contrast(1.05);}
+.hero-panel{display:grid;grid-template-columns:2fr 1fr;max-width:1400px;margin:0 auto;padding:32px 0 90px;align-items:start;}
+.hero-panel h1{font-size:clamp(26px,3vw,38px);grid-column:1;}
+.hero-panel p{font-size:14px;line-height:1.8;color:var(--muted);grid-column:1;max-width:440px;}
+.hero-panel .object-tag{grid-column:1;grid-row:1;margin-bottom:8px;}
+.price-row{grid-column:2;grid-row:1/4;justify-self:end;flex-direction:column;align-items:flex-end;gap:16px;}
+.price-row .now{font-family:'IBM Plex Mono',monospace;font-size:20px;}
+.price-row .was{font-size:13px;opacity:0.5;text-decoration:line-through;}
+.btn{background:var(--accent);color:#fff;border-radius:0;grid-column:2;}
+.btn:hover{background:var(--text);}
+
+.gallery-intro{border-top:1px solid var(--line);max-width:1400px;margin:0 auto;padding-left:48px;padding-right:48px;}
+.gallery-intro h2{font-size:20px;text-transform:uppercase;letter-spacing:0.02em;}
+.gallery-intro .count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+
+/* ---- Strikt modulair rooster, 3 kolommen, geen alternerende rijen ---- */
+.gallery{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);padding:0 48px 90px;}
+.item{background:#fff;display:flex;flex-direction:column;padding:0;}
+.item:nth-child(even){grid-template-columns:unset;}
+.item-media, .item:nth-child(even) .item-media{order:initial;position:relative;}
+.item-media img{aspect-ratio:1/1;filter:grayscale(0.1) contrast(1.05);}
+.item-media .object-tag{position:absolute;left:12px;top:12px;background:#fff;padding:3px 8px;}
+.item-info, .item:nth-child(even) .item-info{order:initial;padding:20px;}
+.item-info h3{font-size:16px;margin-bottom:8px;}
+.item-info p{font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:16px;}
+.item-info .now{font-family:'IBM Plex Mono',monospace;font-size:15px;}
+.item-info .was{font-size:12px;opacity:0.5;text-decoration:line-through;}
+.item-info .btn{padding:9px 16px;font-size:11px;}
+
+footer{border-top:1px solid var(--line);color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+
+.modal{background:#fff;border:1px solid var(--text);color:var(--text);border-radius:0;}
+.modal input, .modal select{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:0;}
+.modal .close{color:var(--text);}
+.modal .error-msg{color:var(--accent);}
+.modal .summary-line{border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;}
+.modal .summary-total{font-family:'IBM Plex Mono',monospace;font-size:17px;color:var(--accent);}
+
+@media(max-width:860px){
+  .gallery{grid-template-columns:1fr;}
+  .hero-panel{grid-template-columns:1fr;}
+  .price-row{grid-column:1;justify-self:start;align-items:flex-start;}
+}

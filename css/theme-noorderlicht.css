@@ -1,0 +1,74 @@
+/* Noorderlicht — poollicht boven de rivier: een gloed van groen en
+   paars achter elk object, alsof het buiten in de poolnacht staat. */
+:root{
+  --bg:#0A0C16;
+  --panel:#0F1220;
+  --text:#EDEFF5;
+  --muted:#8890AC;
+  --aurora1:#4FD1A5;
+  --aurora2:#9B7FE8;
+  --line:rgba(237,239,245,0.1);
+}
+body{background:var(--bg);color:var(--text);}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-0.01em;}
+
+.site-header{background:rgba(10,12,22,0.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+.site-logo{font-family:'Fraunces',serif;font-size:19px;}
+.site-header nav a{color:var(--text);opacity:0.6;font-size:13px;}
+.site-header nav a:hover{opacity:1;color:var(--aurora1);}
+.account-area button, .account-area span{border:1px solid var(--line);color:var(--text);}
+
+.object-tag{color:var(--aurora1);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+.object-tag .dot{background:linear-gradient(90deg,var(--aurora1),var(--aurora2));}
+
+.hero{background:var(--panel);position:relative;overflow:hidden;}
+.hero::before{
+  content:"";position:absolute;top:-30%;left:-10%;width:80%;height:160%;
+  background:radial-gradient(ellipse, rgba(79,209,165,0.16) 0%, transparent 65%);
+  filter:blur(30px);pointer-events:none;
+}
+.hero::after{
+  content:"";position:absolute;bottom:-30%;right:-10%;width:70%;height:140%;
+  background:radial-gradient(ellipse, rgba(155,127,232,0.14) 0%, transparent 65%);
+  filter:blur(30px);pointer-events:none;
+}
+.hero-media{background:transparent;}
+.hero-media::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(10,12,22,0.7) 100%);
+  pointer-events:none;
+}
+.hero-media img{filter:contrast(1.05) saturate(0.9) brightness(0.92);}
+.hero-panel{position:relative;z-index:1;}
+.hero-panel h1{font-size:clamp(30px,3.4vw,46px);background:linear-gradient(90deg,var(--text),var(--aurora1));-webkit-background-clip:text;background-clip:text;}
+.hero-panel p{font-size:14px;line-height:1.9;color:var(--muted);}
+.price-row .now{font-family:'Fraunces',serif;font-size:22px;color:var(--aurora1);}
+.price-row .was{font-size:14px;opacity:0.4;text-decoration:line-through;}
+.btn{background:linear-gradient(90deg,var(--aurora1),var(--aurora2));color:var(--bg);border-radius:2px;}
+.btn:hover{opacity:0.88;}
+
+.gallery-intro{border-top:1px solid var(--line);}
+.gallery-intro h2{font-size:27px;}
+.gallery-intro .count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+
+.item-media{border-radius:2px;overflow:hidden;position:relative;}
+.item-media::before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(160deg, rgba(79,209,165,0.12), transparent 50%, rgba(155,127,232,0.12));
+  pointer-events:none;
+}
+.item-media img{aspect-ratio:4/5;filter:contrast(1.05) saturate(0.9) brightness(0.92);}
+.item-media .object-tag{position:absolute;left:16px;bottom:16px;background:rgba(10,12,22,0.75);padding:5px 12px;z-index:2;}
+.item-info h3{font-size:23px;}
+.item-info p{font-size:14px;line-height:1.85;color:var(--muted);}
+.item-info .now{font-family:'Fraunces',serif;font-size:19px;color:var(--aurora1);}
+.item-info .was{font-size:14px;opacity:0.4;text-decoration:line-through;}
+
+footer{border-top:1px solid var(--line);opacity:0.5;font-family:'IBM Plex Mono',monospace;}
+
+.modal{background:var(--panel);border:1px solid var(--line);color:var(--text);}
+.modal input, .modal select{background:var(--bg);border:1px solid var(--line);color:var(--text);}
+.modal .close{color:var(--text);opacity:0.6;}
+.modal .error-msg{color:#e39a8c;}
+.modal .summary-line{border-bottom:1px solid var(--line);}
+.modal .summary-total{font-family:'Fraunces',serif;font-size:19px;color:var(--aurora1);}

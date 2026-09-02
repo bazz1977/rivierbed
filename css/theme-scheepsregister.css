@@ -1,0 +1,70 @@
+/* Scheepsregister — een scheepvaartregister: objecten genoteerd als
+   ladingposten in een grootboek, met liniëring en kolommen — geen
+   fotogalerij maar een lijst. */
+:root{
+  --bg:#F0ECE0;
+  --text:#1F2318;
+  --muted:#5B5645;
+  --ink:#1F2318;
+  --stamp:#7A1F1F;
+  --line:#B8AF95;
+}
+body{background:var(--bg);color:var(--text);
+  background-image:repeating-linear-gradient(180deg, transparent 0 43px, var(--line) 43px 44px);
+}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;}
+
+.site-header{background:var(--bg);border-bottom:2px solid var(--ink);}
+.site-logo{font-family:'Fraunces',serif;font-size:19px;}
+.site-header nav a{color:var(--ink);font-size:12px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;}
+.site-header nav a:hover{color:var(--stamp);}
+.account-area button, .account-area span{border:1px solid var(--ink);color:var(--ink);font-family:'IBM Plex Mono',monospace;}
+
+.object-tag{color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:10px;}
+.object-tag .dot{background:var(--stamp);}
+
+.hero{grid-template-columns:1fr 1.6fr;background:var(--bg);border-bottom:2px solid var(--ink);}
+.hero-media{border:1px solid var(--ink);margin:20px;max-height:340px;}
+.hero-media::after{display:none;}
+.hero-media img{filter:sepia(0.2) contrast(1.05);}
+.hero-panel{justify-content:center;padding:40px 48px;}
+.hero-panel h1{font-size:clamp(24px,2.6vw,32px);}
+.hero-panel p{font-size:13px;line-height:1.8;color:var(--muted);}
+.price-row .now{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--stamp);}
+.price-row .was{font-size:13px;opacity:0.5;text-decoration:line-through;}
+.btn{background:var(--ink);color:var(--bg);border-radius:0;font-family:'IBM Plex Mono',monospace;}
+.btn:hover{background:var(--stamp);}
+
+.gallery-intro h2{font-size:22px;}
+.gallery-intro .count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+
+/* ---- Register: elke rij is een ladingpost, geen split-grid meer ---- */
+.gallery{padding:0 48px 60px;}
+.item{
+  display:flex;align-items:center;gap:24px;padding:16px 0;border-bottom:1px solid var(--ink);
+}
+.item:nth-child(even){grid-template-columns:unset;}
+.item-media, .item:nth-child(even) .item-media{order:initial;width:96px;flex:none;}
+.item-media img{aspect-ratio:1/1;width:96px;height:96px;filter:sepia(0.2) contrast(1.05);}
+.item-media .object-tag{position:static;background:none;padding:0;}
+.item-info, .item:nth-child(even) .item-info{order:initial;flex:1;padding-top:0;display:flex;align-items:baseline;justify-content:space-between;gap:20px;}
+.item-info h3{font-size:18px;margin-bottom:0;min-width:160px;}
+.item-info p{font-size:12px;color:var(--muted);margin-bottom:0;flex:1;max-width:none;}
+.item-info .price-row{margin-bottom:0;flex:none;}
+.item-info .now{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--stamp);}
+.item-info .was{font-size:12px;opacity:0.5;text-decoration:line-through;}
+.item-info .btn{padding:8px 16px;font-size:11px;}
+
+footer{border-top:2px solid var(--ink);opacity:0.7;font-family:'IBM Plex Mono',monospace;font-size:11px;}
+
+.modal{background:var(--bg);border:2px solid var(--ink);color:var(--text);border-radius:0;}
+.modal input, .modal select{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:0;}
+.modal .close{color:var(--ink);}
+.modal .error-msg{color:var(--stamp);}
+.modal .summary-line{border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;}
+.modal .summary-total{font-family:'IBM Plex Mono',monospace;font-size:17px;color:var(--stamp);}
+
+@media(max-width:860px){
+  .item{flex-wrap:wrap;}
+  .item-info, .item:nth-child(even) .item-info{flex-wrap:wrap;}
+}

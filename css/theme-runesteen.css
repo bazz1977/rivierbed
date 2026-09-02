@@ -1,0 +1,70 @@
+/* Runesteen — een veld met staande stenen: elk object op een andere
+   hoogte, gekerfd in graniet, aardse okers en mos, geen twee gelijk. */
+:root{
+  --bg:#3A3833;
+  --stone:#4A4740;
+  --text:#E9E4D6;
+  --muted:#B0AA98;
+  --rune:#C4622E;
+  --moss:#7C8A5E;
+  --line:rgba(233,228,214,0.14);
+}
+body{background:var(--bg);color:var(--text);
+  background-image:radial-gradient(circle at 20% 30%, rgba(255,255,255,0.03) 0, transparent 40%),
+                    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.03) 0, transparent 40%);
+}
+h1,h2,h3{font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;}
+
+.site-header{background:rgba(58,56,51,0.92);border-bottom:1px solid var(--line);}
+.site-logo{font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;}
+.site-header nav a{color:var(--text);opacity:0.6;font-size:12px;font-family:'IBM Plex Mono',monospace;}
+.site-header nav a:hover{opacity:1;color:var(--rune);}
+.account-area button, .account-area span{border:1px solid var(--line);color:var(--text);}
+
+.object-tag{color:var(--rune);font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;}
+.object-tag .dot{background:var(--rune);}
+
+.hero{background:var(--stone);}
+.hero-media{filter:none;box-shadow:inset 0 0 100px 30px rgba(0,0,0,0.4);}
+.hero-media::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(58,56,51,0.1), rgba(58,56,51,0.55));pointer-events:none;
+}
+.hero-media img{filter:grayscale(0.35) sepia(0.15) contrast(1.1) brightness(0.85);}
+.hero-panel h1{font-size:clamp(30px,4vw,52px);line-height:0.95;}
+.hero-panel p{font-size:14px;line-height:1.8;color:var(--muted);font-family:'IBM Plex Mono',monospace;text-transform:none;}
+.price-row .now{font-family:'Archivo',sans-serif;font-weight:700;font-size:21px;color:var(--rune);}
+.price-row .was{font-size:14px;opacity:0.45;text-decoration:line-through;}
+.btn{background:var(--rune);color:var(--bg);border-radius:0;}
+.btn:hover{background:var(--moss);}
+
+.gallery-intro{border-top:1px solid var(--line);}
+.gallery-intro .count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+
+/* ---- Staande stenen: rooster met wisselende hoogtes, geen rijen ---- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:0 48px 100px;align-items:start;}
+.item{display:flex;flex-direction:column;padding:0;}
+.item:nth-child(3n+2){margin-top:56px;}
+.item:nth-child(3n){margin-top:-24px;}
+.item:nth-child(even){grid-template-columns:unset;}
+.item-media, .item:nth-child(even) .item-media{order:initial;position:relative;background:var(--stone);padding:10px;}
+.item-media img{aspect-ratio:3/4;filter:grayscale(0.35) sepia(0.15) contrast(1.1) brightness(0.85);}
+.item-media .object-tag{position:absolute;left:20px;bottom:20px;background:rgba(58,56,51,0.85);padding:4px 10px;}
+.item-info, .item:nth-child(even) .item-info{order:initial;padding-top:16px;}
+.item-info h3{font-size:17px;margin-bottom:8px;}
+.item-info p{font-size:13px;line-height:1.7;color:var(--muted);font-family:'IBM Plex Mono',monospace;text-transform:none;margin-bottom:16px;}
+.item-info .now{font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;color:var(--rune);}
+.item-info .was{font-size:13px;opacity:0.45;text-decoration:line-through;}
+
+footer{border-top:1px solid var(--line);opacity:0.55;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;font-size:10px;letter-spacing:0.08em;}
+
+.modal{background:var(--stone);border:1px solid var(--line);color:var(--text);border-radius:0;}
+.modal input, .modal select{background:var(--bg);border:1px solid var(--line);color:var(--text);border-radius:0;}
+.modal .close{color:var(--text);}
+.modal .error-msg{color:#d98b6b;}
+.modal .summary-line{border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;}
+.modal .summary-total{font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;color:var(--rune);}
+
+@media(max-width:860px){
+  .gallery{grid-template-columns:1fr;}
+  .item:nth-child(3n+2), .item:nth-child(3n){margin-top:0;}
+}

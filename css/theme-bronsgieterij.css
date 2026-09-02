@@ -1,0 +1,56 @@
+/* Bronsgieterij — een bronsgieterij-atelier: elk stuk krijgt een gegoten
+   plaquette, verweerd koper-groen, gegraveerde bijschriften. */
+:root{
+  --bg:#26302B;
+  --panel:#1D251F;
+  --text:#DCD4BE;
+  --muted:#9AA491;
+  --patina:#6E8A6C;
+  --brass:#C7A15A;
+  --line:rgba(220,212,190,0.16);
+}
+body{background:var(--bg);color:var(--text);}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:0.01em;}
+
+.site-header{background:rgba(38,48,43,0.94);border-bottom:1px solid var(--line);}
+.site-logo{font-family:'Fraunces',serif;font-weight:600;font-size:19px;}
+.site-header nav a{color:var(--text);opacity:0.6;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;}
+.site-header nav a:hover{opacity:1;color:var(--brass);}
+.account-area button, .account-area span{border:1px solid var(--brass);color:var(--brass);}
+
+.object-tag{color:var(--brass);font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass);padding:4px 0;}
+.object-tag .dot{display:none;}
+
+.hero{background:var(--panel);}
+.hero-media{border:10px solid var(--panel);box-shadow:0 0 0 1px var(--brass) inset;}
+.hero-media::after{
+  content:"";position:absolute;inset:0;box-shadow:inset 0 0 80px 20px rgba(0,0,0,0.5);pointer-events:none;
+}
+.hero-media img{filter:sepia(0.2) hue-rotate(60deg) saturate(0.6) contrast(1.1) brightness(0.9);}
+.hero-panel h1{font-size:clamp(28px,3.2vw,42px);}
+.hero-panel p{font-size:14px;line-height:1.85;color:var(--muted);}
+.price-row .now{font-family:'Fraunces',serif;font-size:21px;color:var(--brass);}
+.price-row .was{font-size:14px;opacity:0.45;text-decoration:line-through;}
+.btn{background:var(--brass);color:var(--panel);}
+.btn:hover{background:var(--patina);}
+
+.gallery-intro{border-top:1px solid var(--line);}
+.gallery-intro h2{font-size:25px;}
+.gallery-intro .count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+
+.item-media{border:8px solid var(--panel);box-shadow:0 0 0 1px var(--line) inset;}
+.item-media img{aspect-ratio:4/5;filter:sepia(0.2) hue-rotate(60deg) saturate(0.6) contrast(1.1) brightness(0.9);}
+.item-media .object-tag{position:absolute;left:16px;bottom:16px;background:var(--panel);padding:6px 12px;}
+.item-info h3{font-size:22px;}
+.item-info p{font-size:14px;line-height:1.85;color:var(--muted);}
+.item-info .now{font-family:'Fraunces',serif;font-size:18px;color:var(--brass);}
+.item-info .was{font-size:14px;opacity:0.45;text-decoration:line-through;}
+
+footer{border-top:1px solid var(--line);opacity:0.55;font-family:'IBM Plex Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;font-size:10px;}
+
+.modal{background:var(--panel);border:1px solid var(--brass);color:var(--text);}
+.modal input, .modal select{background:var(--bg);border:1px solid var(--line);color:var(--text);}
+.modal .close{color:var(--text);}
+.modal .error-msg{color:#c96b4e;}
+.modal .summary-line{border-bottom:1px solid var(--line);}
+.modal .summary-total{font-family:'Fraunces',serif;font-size:19px;color:var(--brass);}

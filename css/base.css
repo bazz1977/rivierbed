@@ -10,13 +10,17 @@ button{cursor:pointer;font-family:inherit;}
 /* ---- Theme switcher (fixed corner control) ---- */
 .theme-switcher{
   position:fixed;bottom:20px;right:20px;z-index:50;
-  display:flex;flex-direction:column;gap:6px;
-  background:rgba(20,20,20,0.85);padding:10px;border-radius:2px;
+  display:flex;flex-direction:column;gap:4px;
+  background:rgba(15,15,15,0.92);padding:8px;border-radius:4px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.35);
 }
+.theme-switcher[hidden]{display:none;}
 .theme-switcher button{
-  background:none;border:1px solid rgba(255,255,255,0.25);color:#eee;
-  font-size:11px;padding:7px 12px;text-align:left;font-family:'IBM Plex Mono',monospace;
+  background:none;border:1px solid rgba(255,255,255,0.2);color:#eee;
+  font-size:11px;padding:8px 14px;text-align:left;font-family:'IBM Plex Mono',monospace;
+  border-radius:2px;
 }
+.theme-switcher button:hover{border-color:rgba(255,255,255,0.5);}
 .theme-switcher button.active{border-color:#B07845;color:#B07845;}
 
 /* ---- Header ---- */

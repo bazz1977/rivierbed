@@ -6,6 +6,12 @@ const THEME_FILES = {
   "nachtelijke-fjord": "css/theme-nachtelijke-fjord.css",
   "archiefkaart": "css/theme-archiefkaart.css",
   "rauw-beton": "css/theme-rauwbeton.css",
+  "vloedlijn": "css/theme-vloedlijn.css",
+  "bronsgieterij": "css/theme-bronsgieterij.css",
+  "noorderlicht": "css/theme-noorderlicht.css",
+  "scheepsregister": "css/theme-scheepsregister.css",
+  "wit-atelier": "css/theme-witatelier.css",
+  "runesteen": "css/theme-runesteen.css",
 };
 
 // Tijdelijke drijfhout-placeholders (rechtenvrij, Pexels) totdat er scherpe
